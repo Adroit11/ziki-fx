@@ -85,7 +85,7 @@ $_SESSION['accesstoken'] = true;
                     <div class="row">
                         <div class="col-md-12">
                             <div class="row d-flex flex-column post-section">
-                                <form method="POST" action="<?php echo "{$site_url}/post.php" ?>">
+                                <form method="POST" action="/post.php" enctype="multipart/form-data">
                                     <textarea class="editable medium-editor-textarea post-input" type="text" name="body" placeholder="What’s happening?"></textarea>
 
                                     <div class="row mx-0 d-flex flex-row mt-auto justify-content-between">
@@ -103,11 +103,16 @@ $_SESSION['accesstoken'] = true;
                                         </div>
                         -->
                                         <div class="post-action-left" style="padding-left:700px;">
-                                            <i class="fas fa-paperclip"></i>
+                                            <div class="image-upload">
+                                                <label for="file-input">
+                                                    <i class="fas fa-paperclip"></i>
+                                                </label>
+                                                <input id="file-input" type="file" name="image" style="visibility:hidden; width:0; height:0;" />
+                                            </div>
                                             <a class="post-action-item" href="#css"><img src="assets/img/mic.svg"></a>
                                             <i class="fas fa-link"></i>
                                             <button type="submit" class="btn btn-primary post-action-item">Publish</button>
-                                    <form method="POST" action="post.php">
+                                    </form>
                                     </div>
                                 </div>
                             </div>

@@ -46,7 +46,7 @@ const $ = document.querySelector.bind(document)
                                 <div class="row blog-main-item">
                                     <div class="col-md-3 col-12">
                                         <div class="row">
-                                            <img src="assets/img/wall.jpg" class="img-fluid post-img" alt="Profile Image">
+                                            <img src="${card.post_image}" class="img-fluid post-img" alt="Profile Image">
                                         </div>
                                     </div>
                                     <div class="col-md-9 col-12">

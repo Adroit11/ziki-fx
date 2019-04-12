@@ -4,6 +4,7 @@ class Post {
     private $userId;
     private $storyTitle;
     private $storyBody;
+    private $storyImage;
     private $postTimestamp;
     private $image;
     public function __construct() {
@@ -11,6 +12,7 @@ class Post {
         $this->userId = -1;
         $this->storyTitle = "";
         $this->storyBody = "";
+        $this->storyImage = "";
         $this->postTimestamp = "";
         $this->image = "";
     }
@@ -24,7 +26,7 @@ class Post {
         $this->storyTitle = $newstoryTitle;
     }
     public function setStoryImage($newstoryImage) {
-        $this->image = $newstoryImage;
+        $this->storyImage = $newstoryImage;
     }
     public function setTimePosted($newTimestamp) {
         $this->postTimestamp = $newTimestamp;
@@ -42,7 +44,7 @@ class Post {
         return $this->storyBody;
     }
     public function getStoryImage() {
-        $this->image;
+        return $this->storyImage;
     }
     public function getMarkdownUrl() {
         return $this->fileUrl;
@@ -62,6 +64,7 @@ class Post {
                 $post->id = $row['id'];
                 $post->userId = $row['user_id'];
                 $post->authPic = $row['auth_pic'];
+                $post->storyImage = $row['post_image'];
                 $post->fileUrl = $row['file_url'];
                 $post->postTimestamp = $row['post_timestamp'];
                 $result[] = $post;
@@ -86,8 +89,8 @@ class Post {
                 $md_path = "{$dir}/markdowns/{$filename}/{$filename}-{$unix}.md";
                 $id = $this->id = (mt_rand(100001,999999))."-".$unix;
                 $file = $md_path;
-                //$img = $this->image;
-                $posts[] = array('id'=> $id, 'user_id'=>$name, 'file_url'=> $file, 'auth_pic' => $img, 'post_timestamp' => $time);
+                $post_img = $this->storyImage;
+                $posts[] = array('id'=> $id, 'user_id'=>$name, 'file_url'=> $file, 'post_image' => $post_img, 'auth_pic' => $img, 'post_timestamp' => $time);
                 $json_db = "posts.json";
                 $prev_post = json_decode($db);
                 $new =array_merge($posts, $prev_post);
